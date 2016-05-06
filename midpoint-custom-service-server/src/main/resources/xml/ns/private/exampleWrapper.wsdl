@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2014-2016 Evolveum
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+
+<definitions name="example"
+    targetNamespace="http://midpoint.example.com/xml/ns/example-1"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:tns="http://midpoint.example.com/xml/ns/example-1"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <!-- WARNING! The CXF catalog resolver takes the content of "location" attribute and tries to use it as both systemId and publicId
+                  therefore it has to be set to a namespace for the catalog resolution to work -->
+    <import namespace="http://midpoint.example.com/xml/ns/example-1" 
+    		location="http://midpoint.example.com/xml/ns/example-1"/>
+    <service name="ExampleService">
+        <port name="ExamplePort" binding="tns:ExampleBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/exampleService/examplePort"/>
+        </port>
+    </service>
+</definitions>
