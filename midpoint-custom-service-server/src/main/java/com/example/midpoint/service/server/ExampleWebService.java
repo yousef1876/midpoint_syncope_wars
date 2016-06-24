@@ -29,6 +29,7 @@ import com.evolveum.midpoint.model.common.util.AbstractModelWebService;
 import com.evolveum.midpoint.prism.PrismObject;
 import com.evolveum.midpoint.prism.PrismObjectDefinition;
 import com.evolveum.midpoint.prism.PrismPropertyDefinition;
+import com.evolveum.midpoint.prism.PrismPropertyValue;
 import com.evolveum.midpoint.prism.match.StringIgnoreCaseMatchingRule;
 import com.evolveum.midpoint.prism.query.ObjectQuery;
 import com.evolveum.midpoint.prism.query.SubstringFilter;
@@ -110,8 +111,8 @@ public class ExampleWebService extends AbstractModelWebService implements Exampl
 	
 	private <T> ObjectQuery createUserSubstringQuery(QName property, QName matchingRule, T value)
 			throws SchemaException {
-		PrismPropertyDefinition<UserType> def = getUserDefinition().findPropertyDefinition(property);
-		SubstringFilter<String> filter = SubstringFilter.createSubstring(property, def, matchingRule, value);
+		PrismPropertyDefinition<T> def = getUserDefinition().findPropertyDefinition(property);
+		SubstringFilter<T> filter = SubstringFilter.createSubstring(property, def, matchingRule, new PrismPropertyValue<T>(value));
 		filter.setAnchorStart(true);
 		return ObjectQuery.createObjectQuery(filter);
 	}
