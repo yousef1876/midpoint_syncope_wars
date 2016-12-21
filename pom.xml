@@ -21,7 +21,7 @@
 	<name>midPoint Custom Service</name>
 	<groupId>com.example</groupId>
 	<artifactId>midpoint-custom-service</artifactId>
-	<version>3.5-SNAPSHOT</version>
+	<version>3.5</version>
 	<packaging>pom</packaging>
 	<description>Example of a midPoint overlay project that implements a custom web service</description>
 
