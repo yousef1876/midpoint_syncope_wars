@@ -24,12 +24,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.evolveum.midpoint.model.api.ModelService;
-import com.evolveum.midpoint.model.api.PolicyViolationException;
 import com.evolveum.midpoint.model.common.util.AbstractModelWebService;
+import com.evolveum.midpoint.prism.PrismContext;
 import com.evolveum.midpoint.prism.PrismObject;
 import com.evolveum.midpoint.prism.PrismObjectDefinition;
 import com.evolveum.midpoint.prism.PrismPropertyDefinition;
 import com.evolveum.midpoint.prism.PrismPropertyValue;
+import com.evolveum.midpoint.prism.path.ItemPath;
 import com.evolveum.midpoint.prism.match.StringIgnoreCaseMatchingRule;
 import com.evolveum.midpoint.prism.query.ObjectQuery;
 import com.evolveum.midpoint.prism.query.SubstringFilter;
@@ -39,6 +40,7 @@ import com.evolveum.midpoint.util.exception.CommonException;
 import com.evolveum.midpoint.util.exception.CommunicationException;
 import com.evolveum.midpoint.util.exception.ConfigurationException;
 import com.evolveum.midpoint.util.exception.ObjectNotFoundException;
+import com.evolveum.midpoint.util.exception.PolicyViolationException;
 import com.evolveum.midpoint.util.exception.SchemaException;
 import com.evolveum.midpoint.util.exception.SecurityViolationException;
 import com.evolveum.midpoint.util.logging.Trace;
@@ -65,6 +67,9 @@ public class ExampleWebService extends AbstractModelWebService implements Exampl
 
 	@Autowired(required = true)
 	ModelService modelService;
+	
+	@Autowired(required = true)
+	PrismContext prismContext;
 	
 	public SearchUserByEmailResponseType searchUserByEmail(SearchUserByEmailRequestType parameters)
 			throws Fault {
@@ -112,8 +117,8 @@ public class ExampleWebService extends AbstractModelWebService implements Exampl
 	private <T> ObjectQuery createUserSubstringQuery(QName property, QName matchingRule, T value)
 			throws SchemaException {
 		PrismPropertyDefinition<T> def = getUserDefinition().findPropertyDefinition(property);
-		SubstringFilter<T> filter = SubstringFilter.createSubstring(property, def, matchingRule, new PrismPropertyValue<T>(value));
-		filter.setAnchorStart(true);
+		SubstringFilter<T> filter = SubstringFilter.createSubstring(new ItemPath(property), def, 
+				prismContext, matchingRule, new PrismPropertyValue<T>(value), true, false);
 		return ObjectQuery.createObjectQuery(filter);
 	}
 	
