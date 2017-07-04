@@ -39,6 +39,7 @@ import com.evolveum.midpoint.task.api.Task;
 import com.evolveum.midpoint.util.exception.CommonException;
 import com.evolveum.midpoint.util.exception.CommunicationException;
 import com.evolveum.midpoint.util.exception.ConfigurationException;
+import com.evolveum.midpoint.util.exception.ExpressionEvaluationException;
 import com.evolveum.midpoint.util.exception.ObjectNotFoundException;
 import com.evolveum.midpoint.util.exception.PolicyViolationException;
 import com.evolveum.midpoint.util.exception.SchemaException;
@@ -105,7 +106,7 @@ public class ExampleWebService extends AbstractModelWebService implements Exampl
 
 	private <T> List<PrismObject<UserType>> findUsers(QName propertyName, T email, QName matchingRule,
 			Task task, OperationResult result) throws SchemaException, ObjectNotFoundException,
-			SecurityViolationException, CommunicationException, ConfigurationException {
+			SecurityViolationException, CommunicationException, ConfigurationException, ExpressionEvaluationException {
 
 		ObjectQuery query = createUserSubstringQuery(propertyName, matchingRule, email);
 		List<PrismObject<UserType>> foundObjects = modelService.searchObjects(UserType.class, query, null,
