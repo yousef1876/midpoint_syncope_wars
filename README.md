@@ -1,5 +1,5 @@
 # midpoint_syncope_wars
-![DashBoard ](../master/dashboard.png)
+![DashBoard ](../master/midpoint/dashboard.png)
 
 You can also download the source code midpoint and use maven to generate the war file then add that war file into tomcat webapps
 
