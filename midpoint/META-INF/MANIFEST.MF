@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: CDSTAR
+Spring-Boot-Version: 1.5.8.e1
+Bugtracking-System: http://jira.evolveum.com
+Main-Class: com.evolveum.midpoint.tools.layout.MidPointWarLauncher
+License: Apache License 2.0
+SCM-Revision: git-v3.8devel-45-g8db1507e6f
+Organization: Evolveum
+Start-Class: com.evolveum.midpoint.web.boot.MidPointSpringApplication
+Spring-Boot-Classes: WEB-INF/classes/
+License-URL: http://www.apache.org/licenses/LICENSE-2.0.txt
+Spring-Boot-Lib: WEB-INF/lib/
+Version-Number: 3.8-SNAPSHOT
+Created-By: Apache Maven 3.5.0
+Build-Jdk: 1.8.0_144
+Organization-URL: http://www.evolveum.com
+

@@ -1,0 +1,13 @@
+
+                   _ _____              _
+             _    | |  _  \     _     _| |_
+   ___ ____ (_) __| | |_) |___ (_)___|_   _|
+  |  _ ` _ `| |/ _  |  __/  _ \| |  _` | |
+  | | | | | | | (_| | |  | (_) | | | | | |_
+  |_| |_| |_|_|\____|_|  \____/|_|_| |_|\__|  by Evolveum and partners
+
+  Licensed under the Apache License, Version 2.0 see: http://www.apache.org/licenses/LICENSE-2.0
+  Version :  3.8-SNAPSHOT
+  Sources :  https://github.com/Evolveum/midpoint.git  branch:  master
+  Bug reporting system : http://jira.evolveum.com/
+  Product information : http://wiki.evolveum.com/display/midPoint
